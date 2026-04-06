@@ -109,8 +109,8 @@ class MaxHeap {
         heap.clear();
         heap.appendAll(array);
 
-        for (i <- (heap.size / 2 - 1) to 0 by -1) {
-            heapifyDown(i);
+        for (index <- (heap.size / 2 - 1) to 0 by -1) {
+            heapifyDown(index);
         }
     }
 }
