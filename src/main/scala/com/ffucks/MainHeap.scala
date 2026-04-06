@@ -1,21 +1,21 @@
 package com.ffucks
 
 @main def runHeap(): Unit = {
-   /* val heapInsert = new MaxHeap();
-    heapInsert.buildHeap(Seq(40, 20, 30, 10));
+    val heapInsert = new MaxHeap();
+    heapInsert.buildHeap(Seq(40, 20, 30, 10))
 
-    heapInsert.insert(50);
-    println("Heap Insert: " + heapInsert.getHeap());*/
+    println("Heap before Insert: " + heapInsert.getHeap())
+    heapInsert.insert(50)
+    println("Heap After Insert: " + heapInsert.getHeap())
 
-
-    val arrayBuild = Seq(2, 5, 10, 4, 7, 0);
+    val arrayBuild = Seq(10, 7, 1, 4, 5, 0)
     val heap = new MaxHeap();
 
-    println("Array before build: " + arrayBuild);
+    println("----------------");
 
-    heap.buildHeap(arrayBuild);
-    println("Heap after build: " + heap.getHeap());
+    heap.buildHeap(arrayBuild)
 
-    val max = heap.extractMax();
-    println("Heap after extractMax: " + heap.getHeap() + " Max Value " + max );
+    println("Heap Before extractMax: " + arrayBuild)
+    val max = heap.extractMax()
+    println("Heap After extractMax: " + heap.getHeap() + " Max Value " + max )
 }

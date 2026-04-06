@@ -7,77 +7,77 @@ class MaxHeap {
     private val heap = ArrayBuffer[Int]();
 
     def getHeap(): Seq[Int] = {
-        heap.toSeq;
+        heap.toSeq
     }
 
     def buildHeap(array: Seq[Int]): Unit = {
-        heap.clear();
-        heap.appendAll(array);
+        heap.clear()
+        heap.appendAll(array)
 
         for (index <- (heap.size / 2 - 1) to 0 by -1) {
-            heapifyDown(index);
+            heapifyDown(index)
         }
     }
 
     def insert(value: Int): Unit = {
-        heap.append(value);
-        heapifyUp(heap.size - 1);
+        heap.append(value)
+        heapifyUp(heap.size - 1)
     }
 
     def extractMax(): Int = {
         if (heap.isEmpty) {
-            throw new RuntimeException("Heap is empty");
+            throw new RuntimeException("Heap is empty")
         }
 
         val max = heap(0);
-        val last = heap.remove(heap.size - 1);
+        val last = heap.remove(heap.size - 1)
 
         if (heap.nonEmpty) {
-            heap(0) = last;
-            heapifyDown(0);
+            heap(0) = last
+            heapifyDown(0)
         }
 
         max;
     }
 
     private def heapifyUp(index: Int): Unit = {
-        var i = index;
+        var i = index
 
         while (i > 0) {
-            val parent = (i - 1) / 2;
+            val parent = (i - 1) / 2
 
             if (heap(i) <= heap(parent)) {
                 return;
             }
 
-            swap(i, parent);
-            i = parent;
+            swap(i, parent)
+            i = parent
         }
     }
 
     private def heapifyDown(index: Int): Unit = {
         var i = index;
-        val size = heap.size;
+        val size = heap.size
 
         while (true) {
-            val left = 2 * i + 1;
-            val right = 2 * i + 2;
-            var largest = i;
+            val left = 2 * i + 1
+            val right = 2 * i + 2
+            var largest = i
 
             if (left < size && heap(left) > heap(largest)) {
-                largest = left;
+                largest = left
             }
 
             if (right < size && heap(right) > heap(largest)) {
-                largest = right;
+                largest = right
             }
 
             if (largest == i) {
-                return;
+                return
             }
 
             swap(i, largest);
-            i = largest;
+            i = largest
         }
     }
 
