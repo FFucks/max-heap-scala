@@ -8,7 +8,7 @@ package com.ffucks
     println("Heap Insert: " + heapInsert.getHeap());
 
 
-    val arrayBuild = Seq(1, 5, 10, 4, 7);
+    val arrayBuild = Seq(2, 5, 10, 4, 7);
     val heap = new MaxHeap();
 
     println("Array before build: " + arrayBuild);
@@ -16,8 +16,8 @@ package com.ffucks
     heap.buildHeap(arrayBuild);
     println("Heap after build: " + heap.getHeap());
 
-    heap.removeAt(2);
-    println("Heap after removeAt: " + heap.getHeap());
+   /* heap.removeAt(2);
+    println("Heap after removeAt: " + heap.getHeap());*/
 
     val max = heap.extractMax();
     println("Heap after extractMax: " + heap.getHeap() + " Max Value " + max );
