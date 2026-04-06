@@ -10,29 +10,18 @@ class MaxHeap {
         heap.toSeq;
     }
 
+    def buildHeap(array: Seq[Int]): Unit = {
+        heap.clear();
+        heap.appendAll(array);
+
+        for (index <- (heap.size / 2 - 1) to 0 by -1) {
+            heapifyDown(index);
+        }
+    }
+
     def insert(value: Int): Unit = {
         heap.append(value);
         heapifyUp(heap.size - 1);
-    }
-
-    def removeAt(index: Int): Unit = {
-        if (index >= heap.size) {
-            return;
-        }
-
-        val last = heap.remove(heap.size - 1);
-
-        if (index < heap.size) {
-            heap(index) = last;
-
-            val parent = (index - 1) / 2;
-
-            if (index > 0 && heap(index) > heap(parent)) {
-                heapifyUp(index);
-            } else {
-                heapifyDown(index);
-            }
-        }
     }
 
     def extractMax(): Int = {
@@ -49,13 +38,6 @@ class MaxHeap {
         }
 
         max;
-    }
-
-    def peek(): Int = {
-        if (heap.isEmpty) {
-            throw new RuntimeException("Heap is empty");
-        }
-        heap(0);
     }
 
     private def heapifyUp(index: Int): Unit = {
@@ -105,12 +87,30 @@ class MaxHeap {
         heap(j) = temp;
     }
 
-    def buildHeap(array: Seq[Int]): Unit = {
-        heap.clear();
-        heap.appendAll(array);
+    def peek(): Int = {
+        if (heap.isEmpty) {
+            throw new RuntimeException("Heap is empty");
+        }
+        heap(0);
+    }
 
-        for (index <- (heap.size / 2 - 1) to 0 by -1) {
-            heapifyDown(index);
+    def removeAt(index: Int): Unit = {
+        if (index >= heap.size) {
+            return;
+        }
+
+        val last = heap.remove(heap.size - 1);
+
+        if (index < heap.size) {
+            heap(index) = last;
+
+            val parent = (index - 1) / 2;
+
+            if (index > 0 && heap(index) > heap(parent)) {
+                heapifyUp(index);
+            } else {
+                heapifyDown(index);
+            }
         }
     }
 }
