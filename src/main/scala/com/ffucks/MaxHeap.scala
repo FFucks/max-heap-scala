@@ -4,7 +4,7 @@ import scala.collection.mutable.ArrayBuffer;
 
 class MaxHeap {
 
-    private val heap = ArrayBuffer[Int]();
+    private val heap = ArrayBuffer[Int]()
 
     def getHeap(): Seq[Int] = {
         heap.toSeq
@@ -29,7 +29,7 @@ class MaxHeap {
             throw new RuntimeException("Heap is empty")
         }
 
-        val max = heap(0);
+        val max = heap(0)
         val last = heap.remove(heap.size - 1)
 
         if (heap.nonEmpty) {
@@ -47,7 +47,7 @@ class MaxHeap {
             val parent = (i - 1) / 2
 
             if (heap(i) <= heap(parent)) {
-                return;
+                return
             }
 
             swap(i, parent)
@@ -56,7 +56,7 @@ class MaxHeap {
     }
 
     private def heapifyDown(index: Int): Unit = {
-        var i = index;
+        var i = index
         val size = heap.size
 
         while (true) {
@@ -76,40 +76,40 @@ class MaxHeap {
                 return
             }
 
-            swap(i, largest);
+            swap(i, largest)
             i = largest
         }
     }
 
     private def swap(i: Int, j: Int): Unit = {
-        val temp = heap(i);
-        heap(i) = heap(j);
-        heap(j) = temp;
+        val temp = heap(i)
+        heap(i) = heap(j)
+        heap(j) = temp
     }
 
     def peek(): Int = {
         if (heap.isEmpty) {
-            throw new RuntimeException("Heap is empty");
+            throw new RuntimeException("Heap is empty")
         }
-        heap(0);
+        heap(0)
     }
 
     def removeAt(index: Int): Unit = {
         if (index >= heap.size) {
-            return;
+            return
         }
 
-        val last = heap.remove(heap.size - 1);
+        val last = heap.remove(heap.size - 1)
 
         if (index < heap.size) {
-            heap(index) = last;
+            heap(index) = last
 
-            val parent = (index - 1) / 2;
+            val parent = (index - 1) / 2
 
             if (index > 0 && heap(index) > heap(parent)) {
-                heapifyUp(index);
+                heapifyUp(index)
             } else {
-                heapifyDown(index);
+                heapifyDown(index)
             }
         }
     }
