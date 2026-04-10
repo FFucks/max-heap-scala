@@ -81,6 +81,7 @@ class MaxHeap {
         }
     }
 
+
     private def swap(i: Int, j: Int): Unit = {
         val temp = heap(i);
         heap(i) = heap(j);
